@@ -8,13 +8,7 @@ const initialTodos = [
   { id: uuid(), task: "Clean garage doors", completed: false }
 ];
 
-//  const fakeAxios = () => {
-//   return Promise.resolve(initialTodos);
-// };
 class App extends React.Component {
-  // you will need a place to store your state in this component.
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
   constructor(props) {
     super(props);
     this.state = {
@@ -22,25 +16,15 @@ class App extends React.Component {
       todoValue: ""
     };
   }
-  // componentDidMount() {
-  //  fakeAxios().then(todos=>{
-  //    this.setState(initialstate =>{
-  //      return{
-
-  //      }
-  //    })
-  //  })
-  // }
 
   handleInputChange = event => {
     console.log("field click", event.target.value);
     this.setState({ todoValue: event.target.value });
   };
   handleTodoSubmit = event => {
-    // alert("adding todo");
     this.setState(oldState => {
       return {
-        todoValue: '',
+        todoValue: "",
         todoList: oldState.todoList.concat({
           id: uuid(),
           task: oldState.todoValue,
@@ -49,12 +33,10 @@ class App extends React.Component {
       };
     });
   };
-  markComplete = id=> {
-   
-    console.log(id)
-    console.log(initialTodos)
-   
-    
+  markComplete = id => {
+    console.log(id);
+    console.log(initialTodos);
+
     this.setState({
       todoList: this.state.todoList.map(todo => {
         if (todo.id === id) {
@@ -66,12 +48,10 @@ class App extends React.Component {
   };
 
   delTodo = id => {
-    console.log(id);
-    debugger
-    this.setState(oldState=>{
-      return{
+    this.setState(oldState => {
+      return {
         todoList: oldState.todoList.filter(todo => todo.id !== id)
-      }
+      };
     });
   };
   render() {
