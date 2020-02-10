@@ -35,22 +35,22 @@ class App extends React.Component {
 
   handleInputChange = event =>{
      console.log("field click",event.target.value);
-    //      this.setState({ todoValue: event.target.value,
-    // })
+         this.setState({ todoValue: event.target.value,
+    })
   }
-  // handleInputChange = event =>{
-  //       console.log("click");
-  //   this.setState({ todoValue: event.target.value,
-  //   })
-  // }
-  // handleInputChange = event =>{
-  //   const newValue = event.target.value;
-  //   console.log('the newValue of the input', newValue);
-  //   this.setState(oldstate=>{ 
-  //     return{
-  //       todoValue: newValue,
-  //   })
-  // }
+  handleTodoSubmit = event => {
+   
+    this.setState(oldState => {
+      return {
+        todoValue: '',
+        todoList: oldState.todoList.concat({
+          id: uuid(),
+          task: oldState.todoValue,
+          completed: false
+        })
+      }
+    })
+  }
 
   render(){
     return (
@@ -62,6 +62,7 @@ class App extends React.Component {
             todoList={this.state.todoList}
              todoValue={this.state.todoValue} 
              handleInputChange={this.handleInputChange}
+             handleTodoSubmit={this.handleTodoSubmit}
         />
 
 

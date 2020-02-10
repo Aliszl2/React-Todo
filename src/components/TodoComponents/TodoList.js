@@ -3,6 +3,7 @@
 import React from "react";
 import Todo from "./Todo";
 import TodoForm from "./TodoForm";
+import uuid from 'uuid';
 
 export default class TodoList extends React.Component {
   
@@ -12,12 +13,14 @@ export default class TodoList extends React.Component {
     
       <>
         <TodoForm 
-        handleInputChange={this.props.handleInputChange}/>
+        handleInputChange={this.props.handleInputChange}
+        handleTodoSubmit={this.props.handleTodoSubmit}
+        />
    
        {this.props.todoList.map(todo=>{
             return(
                 <Todo
-                key={todo.id}
+                key={todo.uuid}
                 todo={todo}
                 
                 />
