@@ -5,9 +5,13 @@ export default class Todo extends React.Component {
   render() {
     return (
       <>
-        <div>{` ${this.props.todo.task}`}</div>
-        <button>Mark as complete</button>
-        <button>{"\u0078"}</button>
+        <div className="notCompleted">{` ${this.props.todo.task}`}</div>
+        <button
+        onClick={this.props.markCompleted}
+               >Mark as complete</button>
+        <button
+        
+        >{"\u0078"}</button>
       </>
     );
   }
