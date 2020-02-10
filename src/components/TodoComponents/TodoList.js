@@ -11,13 +11,15 @@ export default class TodoList extends React.Component {
     return (
     
       <>
-        <TodoForm />
+        <TodoForm 
+        handleInputChange={this.props.handleInputChange}/>
    
        {this.props.todoList.map(todo=>{
             return(
                 <Todo
                 key={todo.id}
                 todo={todo}
+                
                 />
             )
         })} 

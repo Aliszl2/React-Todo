@@ -5,10 +5,13 @@ export default class TodoForm extends React.Component {
     render() {
         return(
 <form action="">
-<input placeholder="add todo" type="text"/>
-<button>Submit Todo</button>
-<button>Mark as complete</button>
-<button>{"\u0078"}</button>
+<input
+ placeholder="add todo"
+  type="text"
+  onChange={this.props.handleInputChange}
+  />
+<button>Add Todo</button>
+
 
 </form>
 
