@@ -37,10 +37,10 @@ class App extends React.Component {
     this.setState({ todoValue: event.target.value });
   };
   handleTodoSubmit = event => {
-    alert("adding todo");
+    // alert("adding todo");
     this.setState(oldState => {
       return {
-        // todoValue: '',
+        todoValue: '',
         todoList: oldState.todoList.concat({
           id: uuid(),
           task: oldState.todoValue,
@@ -49,15 +49,29 @@ class App extends React.Component {
       };
     });
   };
-  markCompleted = id => {
-    console.log("complete button clicked")
+  markComplete = id=> {
    
+    console.log(id)
+    console.log(initialTodos)
+   
+    
+    this.setState({
+      todoList: this.state.todoList.map(todo => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      })
+    });
   };
 
   delTodo = id => {
     console.log(id);
-    this.setState({
-      todoList: [...this.state.todoList.filter(todo => todo.id !== id)]
+    debugger
+    this.setState(oldState=>{
+      return{
+        todoList: oldState.todoList.filter(todo => todo.id !== id)
+      }
     });
   };
   render() {
@@ -71,7 +85,8 @@ class App extends React.Component {
           todoValue={this.state.todoValue}
           handleInputChange={this.handleInputChange}
           handleTodoSubmit={this.handleTodoSubmit}
-          markCompleted={this.markCompleted}
+          markComplete={this.markComplete}
+          delTodo={this.delTodo}
         />
       </div>
     );

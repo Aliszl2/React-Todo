@@ -3,12 +3,12 @@
 import React from "react";
 import Todo from "./Todo";
 import TodoForm from "./TodoForm";
-import uuid from 'uuid';
+// import uuid from 'uuid';
 
 export default class TodoList extends React.Component {
   
   render() {
- 
+    
     return (
     
       <>
@@ -22,13 +22,13 @@ export default class TodoList extends React.Component {
                 <Todo 
                 key={todo.id}
                 todo={todo}
-                markCompleted={this.props.markCompleted}
-                
+                markComplete={this.props.markComplete}
+                delTodo={this.props.delTodo}
                 />
             )
         })} 
       </>
     );
-    // map over array here.  Like with cards and conatiners
+
   }
 }

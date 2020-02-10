@@ -1,16 +1,25 @@
 import React from "react";
 import "./Todo.css";
 
+
 export default class Todo extends React.Component {
+
+    getStyle = () => {
+        return {
+          textDecoration: this.props.todo.completed ? "line-through" : "none"
+        };
+      };
+
   render() {
+
     return (
       <>
-        <div className="notCompleted">{` ${this.props.todo.task}`}</div>
+        <div style={this.getStyle()}>{`${this.props.todo.task} `}</div>
         <button
-        onClick={this.props.markCompleted}
+        onClick={()=>this.props.markComplete(this.props.todo.id)}
                >Mark as complete</button>
         <button
-        
+        onClick={()=>this.props.delTodo(this.props.todo.id)}
         >{"\u0078"}</button>
       </>
     );
